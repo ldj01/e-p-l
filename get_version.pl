@@ -33,7 +33,15 @@ $source_dir = $ARGV[0];
 my $git_dir = `git rev-parse --git-dir 2>> /dev/null`;
 if ($? != 0)
 {
-    chomp($output = `cat $source_dir/version.txt`);
+    if (-f "$source_dir/version.txt")
+    {
+        chomp($output = `cat $source_dir/version.txt`);
+    }
+    else
+    {
+        print STDERR "Warning: $source_dir/version.txt doesn't exist.\n";
+        $output = 'Unknown';
+    }
 
     print "$output\n";
     exit(0);
