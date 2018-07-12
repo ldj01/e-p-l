@@ -66,6 +66,9 @@ setup(
         'Programming Language :: Python :: 3.4',
     ],
 
+    # Do not install this module as a zip file
+    zip_safe=False,
+
     # What does your project relate to?
     keywords='development',
 
